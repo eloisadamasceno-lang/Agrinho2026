@@ -1,0 +1,171 @@
+/* Configurações Globais */
+:root {
+    --verde-primario: #2d5a27;   /* Verde Agro */
+    --verde-claro: #8bc34a;      /* Sustentabilidade */
+    --marrom-terra: #4b3621;     /* Café/Solo */
+    --bege-fundo: #fdfaf5;       /* Fundo suave */
+    --alerta-erro: #e57373;      /* Cor para avisos/químicos */
+    --texto: #333;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bege-fundo);
+    color: var(--texto);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Cabeçalho */
+header {
+    background-color: var(--verde-primario);
+    color: white;
+    width: 100%;
+    padding: 2rem 1rem;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Container do Simulador */
+#game-container {
+    background: #ffffff;
+    max-width: 800px;
+    width: 95%;
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-top: 8px solid var(--marrom-terra);
+    text-align: center;
+}
+
+/* Barra de Status */
+.status-bar {
+    display: flex;
+    justify-content: space-around;
+    background: #f0f4f0;
+    padding: 15px;
+    border-radius: 50px;
+    margin-bottom: 30px;
+    border: 1px solid #ddd;
+}
+
+.status-item {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--verde-primario);
+}
+
+/* Área Visual do Café */
+#cenario {
+    font-size: 6rem;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.1));
+    transition: transform 0.3s ease;
+}
+
+#cenario:hover {
+    transform: scale(1.1);
+}
+
+/* Tipografia do Evento */
+#evento-titulo {
+    color: var(--marrom-terra);
+    margin-bottom: 10px;
+}
+
+#evento-desc {
+    color: #666;
+    margin-bottom: 25px;
+    font-style: italic;
+}
+
+/* Botões de Ação */
+.botoes {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 14px 28px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+button:active {
+    transform: translateY(2px);
+}
+
+.btn-bio {
+    background-color: var(--verde-claro);
+    color: white;
+}
+
+.btn-bio:hover {
+    background-color: #7cb342;
+}
+
+.btn-quimico {
+    background-color: var(--alerta-erro);
+    color: white;
+}
+
+.btn-quimico:hover {
+    background-color: #d32f2f;
+}
+
+.btn-avancar {
+    background-color: var(--marrom-terra);
+    color: white;
+}
+
+/* Mensagens de Feedback */
+#mensagem {
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    min-height: 60px;
+    display: none; /* Escondido até ter conteúdo */
+}
+
+/* Classes para manipulação via JS */
+.msg-sucesso {
+    display: block !important;
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+}
+
+.msg-perigo {
+    display: block !important;
+    background-color: #ffebee;
+    color: #c62828;
+    border: 1px solid #ffcdd2;
+}
