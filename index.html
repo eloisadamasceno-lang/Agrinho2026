@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Café Sustentável - Agrinho 2026</title>
+    <style>
+        /* CSS - Deixando o site bonito */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f1;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            background-color: #2e7d32;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+
+        .status-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .status-item {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .btn-quimico { background-color: #e53935; color: white; }
+        .btn-sustentavel { background-color: #43a047; color: white; }
+        .btn-nada { background-color: #fb8c00; color: white; }
+
+        .btn:hover { opacity: 0.8; transform: scale(1.02); }
+
+        #mensagem {
+            margin-top: 20px;
+            font-style: italic;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Simulador Agrinho 2026</h1>
+        <p>Agro Forte, Futuro Sustentável: O Equilíbrio no Cafezal</p>
+    </header>
+
+    <div class="status-container">
+        <div class="status-item">Produtividade: <br><span id="prod">100</span>%</div>
+        <div class="status-item">Ambiente: <br><span id="amb">100</span>%</div>
+        <div class="status-item">Lucro: <br>R$ <span id="lucro">1000</span></div>
+    </div>
+
+    <div class="card">
+        <h2 id="titulo-cenario">Cenário 1: O Bicho-Mineiro apareceu!</h2>
+        <p id="desc-cenario">As folhas do seu café apresentam manchas brancas. Se não cuidar, a planta não fará fotossíntese. O que você faz?</p>
+
+        <button class="btn btn-quimico" onclick="decisao('quimico')">Usar Inseticida Forte (Rápido)</button>
+        <button class="btn btn-sustentavel" onclick="decisao('sustentavel')">Usar Controle Biológico (Vespas)</button>
+        <button class="btn btn-nada" onclick="decisao('nada')">Não fazer nada por enquanto</button>
+
+        <p id="mensagem"></p>
+    </div>
+
+    <script>
+        // JavaScript - A lógica do simulador
+        let produtividade = 100;
+        let ambiente = 100;
+        let lucro = 1000;
+
+        function decisao(tipo) {
+            const msg = document.getElementById('mensagem');
+            
+            if (tipo === 'quimico') {
+                produtividade += 5;
+                ambiente -= 20;
+                lucro -= 150;
+                msg.textContent = "Você eliminou a praga, mas o solo ficou contaminado e as abelhas sumiram!";
+            } else if (tipo === 'sustentavel') {
+                produtividade += 2;
+                ambiente += 5;
+                lucro -= 80;
+                msg.textContent = "Excelente! As vespas controlaram o Bicho-Mineiro e a natureza agradece.";
+            } else {
+                produtividade -= 25;
+                ambiente -= 5;
+                msg.textContent = "A praga se espalhou. Você perdeu parte da produção!";
+            }
+
+            // Atualiza a tela
+            document.getElementById('prod').textContent = produtividade;
+            document.getElementById('amb').textContent = ambiente;
+            document.getElementById('lucro').textContent = lucro;
+
+            // Alerta de fim de jogo (exemplo simples)
+            if (ambiente <= 40) {
+                alert("Cuidado! Sua fazenda está perdendo a biodiversidade. Tente opções mais sustentáveis!");
+            }
+        }
+    </script>
+
+</body>
+</html>
